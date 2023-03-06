@@ -62,7 +62,6 @@ public class TerrainMap : TileMapController
         {
             if (correctChangePercentage <= changedTileResult[i])
             {
-                Debug.Log("넘김");
                 continue;
             }
 
