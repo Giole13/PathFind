@@ -5,6 +5,22 @@ using UnityEngine.SceneManagement;
 
 public static partial class GioleFunc
 {
+    //! 특정 오브젝트의 자식 오브젝트를 서치해서 컴포넌트를 찾아주는 함수
+    public static T FindChildComponent<T>(
+        this GameObject targetObj_, string objName_) where T : Component
+    {
+        T searchResultComponent = default;
+        GameObject searchResultObj = default;
+
+        searchResultObj = FindChildObj(targetObj_, objName_);
+        if (searchResultObj.IsValid())
+        {
+            searchResultComponent = searchResultObj.GetComponent<T>();
+        }
+
+        return searchResultComponent;
+    }
+
     //! 특정 오브젝트의 자식 오브젝트를 서치해서 찾아주는 함수
     public static GameObject FindChildObj(
         this GameObject targetObj_, string objName_)
@@ -33,22 +49,8 @@ public static partial class GioleFunc
                 }
             }
         }
-
-        
-        // LAGACY:
-        //// 방어로직
-        //if (searchTarget == null || searchResult == default)
-        //{
-        //    /* Pass */
-        //}
-        //else
-        //{
-        //    return searchResult;
-        //}
-
         return searchResult;
     }
-
 
     //! 씬의 루트 오브젝트를 서치해서 찾아주는 함수 -> 현재 활성화 씬에서 특정 오브젝트(objName_)를 찾아주는 함수
     public static GameObject GetRootObj(string objName_)
@@ -70,6 +72,23 @@ public static partial class GioleFunc
         return targetObj_;
     }       // GetRootObj()
 
+    //! 특정 오브젝트의 자식 오브젝트를 모두 리턴하는 함수
+    public static List<GameObject> GetChildrenObjs(
+        this GameObject targetObj_)
+    {
+        List<GameObject> objs = new List<GameObject>();
+        GameObject searchTarget = default;
+
+        for (int i = 0; i < targetObj_.transform.childCount; i++)
+        {
+            searchTarget = targetObj_.transform.GetChild(i).gameObject;
+            objs.Add(searchTarget);
+        }
+
+        if (objs.IsVaild()) { return objs; }
+        else { return default(List<GameObject>); }
+    }       // GetChildrenObjs()
+
     //! 현재 활성화 되어 있는 씬을 찾아주는 함수
     public static Scene GetActiveScene()
     {
@@ -90,10 +109,10 @@ public static partial class GioleFunc
     {
         obj_.GetRect().anchoredPosition += position2D;
     }
-    
+
 
     //! 컴포넌트 가져오는 함수
-    public static SomeType GetComponentMust<SomeType>(this GameObject obj)
+    public static SomeType GetComponentMust<SomeType>(this GameObject obj) where SomeType : Component
     {
         SomeType component_ = obj.GetComponent<SomeType>();
 
@@ -102,10 +121,10 @@ public static partial class GioleFunc
 
         return component_;
     }       // GetComponentMust<>() 
-    
-    
+
+
     //! 컴포넌트 가져오는 함수 
-    public static SomeType GetComponentMust<SomeType>(this GameObject obj , string ObjName)
+    public static SomeType GetComponentMust<SomeType>(this GameObject obj, string ObjName) where SomeType : Component
     {
         SomeType component_ = obj.FindChildObj(ObjName).GetComponent<SomeType>();
 
@@ -129,11 +148,26 @@ public static partial class GioleFunc
         return obj_.GetComponentMust<RectTransform>().sizeDelta;
     }
 
+
+    #region Object transform control
+    //! 오브젝트의 로컬 스케일을 변경하는 함수
+    public static void SetLocalScale(this GameObject obj_, Vector3 localScale_)
+    {
+        obj_.transform.localScale = localScale_;
+    }       // SetLocalScale()
+
     //! 오브젝트의 로컬 포지션을 변경하는 함수
     public static void SetLocalPos(this GameObject obj_,
         float x, float y, float z)
     {
         obj_.transform.localPosition = new Vector3(x, y, z);
+    }
+
+    //! 오브젝트의 로컬 포지션을 변경하는 함수
+    public static void SetLocalPos(this GameObject obj_,
+        Vector3 localPos)
+    {
+        obj_.transform.localPosition = localPos;
     }
 
     //! 오브젝트의 로컬 포지션을 연산하는 함수
@@ -143,6 +177,9 @@ public static partial class GioleFunc
         obj_.transform.localPosition =
             obj_.transform.localPosition + new Vector3(x, y, z);
     }           // AddLocalPos()
+    #endregion
+
+
 
     //! 새로운 오브젝트를 만들어서 컴포넌트를 리턴하는 함수
     public static T CreateObj<T>(string objName) where T : Component
@@ -150,4 +187,38 @@ public static partial class GioleFunc
         GameObject newObj = new GameObject(objName);
         return newObj.AddComponent<T>();
     }       // CreateObj()
+
+    //! 오브젝트를 파괴하는 함수
+    public static void DestroyObj(this GameObject obj_, float delay = 0.0f)
+    {
+        Object.Destroy(obj_, delay);
+    }       // DestroyObj()
+
+
+    //! 로컬 포지션을 기준으로 두 타일 오브젝트의 위치를 비교하는 함수
+    public static int CompareTileObjToLocalPos2D(
+        GameObject firstObj, GameObject secondObj)
+    {
+        Vector2 fPos = firstObj.transform.localPosition;
+        Vector2 sPos = secondObj.transform.localPosition;
+
+        int compareResult = 0;
+        if (fPos.y.IsEquals(sPos.y))
+        {
+            // if: x 포지션이 같으면 같은 타일이므로 0을 리턴
+            if (fPos.x.IsEquals(sPos.x)) { compareResult = 0; }
+            else
+            {
+                if (fPos.x < sPos.x) { compareResult = -1; }
+                else { compareResult = 1; }
+            }
+            return compareResult;
+        }       // if: y 포지션이 같은 경우
+
+        // y 포지션이 다른 경우 대소비교
+        if (fPos.y < sPos.y) { compareResult = -1; }
+        else { compareResult = 1; }
+
+        return compareResult;
+    }       // CompareTileObjToLocalPos2D()
 }
