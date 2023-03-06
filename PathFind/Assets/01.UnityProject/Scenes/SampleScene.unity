@@ -3019,26 +3019,26 @@ Transform:
   - {fileID: 1582497675}
   - {fileID: 443063890}
   - {fileID: 534997076}
-  - {fileID: 67473632}
-  - {fileID: 370822283}
-  - {fileID: 924205846}
-  - {fileID: 890625306}
   - {fileID: 693594966}
-  - {fileID: 2060152026}
-  - {fileID: 1661743528}
-  - {fileID: 225584540}
   - {fileID: 1844954883}
+  - {fileID: 2060152026}
   - {fileID: 220372865}
+  - {fileID: 1661743528}
   - {fileID: 259796360}
+  - {fileID: 225584540}
   - {fileID: 1198846526}
   - {fileID: 1507277899}
   - {fileID: 81840024}
   - {fileID: 951984084}
   - {fileID: 1555583158}
   - {fileID: 1574961473}
+  - {fileID: 67473632}
   - {fileID: 1452105215}
+  - {fileID: 370822283}
   - {fileID: 1678777944}
+  - {fileID: 924205846}
   - {fileID: 1002914779}
+  - {fileID: 890625306}
   - {fileID: 161499360}
   - {fileID: 2137635020}
   - {fileID: 526912634}
@@ -3047,14 +3047,14 @@ Transform:
   - {fileID: 1574971261}
   - {fileID: 1944669975}
   - {fileID: 755786403}
-  - {fileID: 152974202}
-  - {fileID: 1101918551}
-  - {fileID: 1134801687}
-  - {fileID: 335943199}
   - {fileID: 371581621}
+  - {fileID: 152974202}
   - {fileID: 1533176670}
+  - {fileID: 1101918551}
   - {fileID: 1978586320}
+  - {fileID: 1134801687}
   - {fileID: 1651883127}
+  - {fileID: 335943199}
   - {fileID: 1049518222}
   m_Father: {fileID: 1844512032}
   m_RootOrder: 0
@@ -6236,6 +6236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1844512032}
   - component: {fileID: 1844512031}
+  - component: {fileID: 1844512033}
   m_Layer: 0
   m_Name: TerrainMap
   m_TagString: Untagged
@@ -6271,6 +6272,18 @@ Transform:
   m_Father: {fileID: 1933097420}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844512033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844512030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5dc2f8406ea1ca48afc8e2508dc6e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1844954882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6484,6 +6497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933097420}
+  - component: {fileID: 1933097421}
   m_Layer: 5
   m_Name: MapBoard
   m_TagString: Untagged
@@ -6512,6 +6526,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933097421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933097419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4192976db78bb7949b72650cc1340fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1944669974
 PrefabInstance:
   m_ObjectHideFlags: 0

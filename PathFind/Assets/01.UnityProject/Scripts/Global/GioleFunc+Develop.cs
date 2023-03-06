@@ -97,7 +97,7 @@ public static partial class GioleFunc
         List<int> list_ = new List<int>();
         for (int i = 0; i < listLength; i++)
         {
-            list_.Add(startIndex + 1);
+            list_.Add(startIndex + i);
         }
         return list_;
     }       // CreateList()

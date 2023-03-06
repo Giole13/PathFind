@@ -60,7 +60,11 @@ public class TerrainMap : TileMapController
         GameObject tempChangeTile = default;
         for (int i = 0; i < allTileObjs.Count; i++)
         {
-            if (correctChangePercentage <= changedTileResult[i]) { continue; }
+            if (correctChangePercentage <= changedTileResult[i])
+            {
+                Debug.Log("넘김");
+                continue;
+            }
 
             // 프리펩을 인스턴스화 해서 교체할 타일의 트랜스폼을 카피한다.
             tempChangeTile = Instantiate(
