@@ -5,6 +5,16 @@ using TMPro;
 
 public static partial class GioleFunc
 {
+    public static Vector2 GetCameraSize()
+    {
+        Vector2 cameraSize = Vector2.zero;
+        cameraSize.y = Camera.main.orthographicSize *2.0f;
+        cameraSize.x = cameraSize.y * Camera.main.aspect;
+
+        return cameraSize;
+    }       // GetCameraSize();
+
+
     public static void SetTmpText(this GameObject obj_, string text_)
     {
         //! 텍스트매쉬프로 형태의 컴포넌트의 텍스트를 설정하는 경우
