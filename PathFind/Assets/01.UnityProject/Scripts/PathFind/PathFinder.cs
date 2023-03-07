@@ -20,7 +20,7 @@ public class PathFinder : GioleSingletone<PathFinder>
     public void FindPath_Astar()
     {
         StartCoroutine(DelayFindPath_Astar(1.0f));
-    }       //FindPath_Astar()
+    }       //FindPath_Astar()z
 
 
     //! 탐색 알고리즘에 딜레이를 건다.
@@ -46,6 +46,7 @@ public class PathFinder : GioleSingletone<PathFinder>
         int loopIdx = 0;
         bool isFoundDestination = false;
         bool isNowayToGo = false;
+        // while (loopIdx < 10)
         while (isFoundDestination == false && isNowayToGo == false)
         {
             // { Open 리스트를 순회해서 가장 코스트가 낮은 노드를 선택한다.
