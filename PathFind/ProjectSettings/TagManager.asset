@@ -44,3 +44,9 @@ TagManager:
   - name: Terrains
     uniqueID: 1478413805
     locked: 0
+  - name: Obstacles
+    uniqueID: 3321670421
+    locked: 0
+  - name: FrontUis
+    uniqueID: 2135469233
+    locked: 0

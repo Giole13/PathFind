@@ -7,14 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5948056462511975885, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
+      propertyPath: m_Name
+      value: FrontRenderer
+      objectReference: {fileID: 0}
     - target: {fileID: 5948056462511975887, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 75e3c54507fc506419b256c1f8c0791a, type: 3}
+    - target: {fileID: 5948056462511975887, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948056462511975887, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -973296875
+      objectReference: {fileID: 0}
     - target: {fileID: 5948056463045650267, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ac7a53c6db3840b45aa9fb2fc24b2a01, type: 3}
+    - target: {fileID: 5948056463045650267, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5948056463045650267, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1478413805
+      objectReference: {fileID: 0}
     - target: {fileID: 5948056463835613066, guid: 1c81ff4219da2a6479ab85242ac85873, type: 3}
       propertyPath: m_Name
       value: Obstacle_PlanCastle
