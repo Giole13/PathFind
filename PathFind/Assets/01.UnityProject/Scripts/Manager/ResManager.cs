@@ -18,8 +18,6 @@ public class ResManager : GioleSingletone<ResManager>
         obstaclePrefabs = new Dictionary<string, GameObject>();
 
         terrainPrefabs.AddObjs(Resources.LoadAll<GameObject>(TERRAIN_PREF_PATH));
-        Debug.Log(terrainPrefabs);
-
         obstaclePrefabs.AddObjs(Resources.LoadAll<GameObject>(OBSTACLE_PREF_PATH));
     }       // Init()
 }       // class ResManager

@@ -81,7 +81,31 @@ public class TerrainMap : TileMapController
 
 
         // { 기존에 존재하는 타일의 순서를 조정하고, 컨트롤러를 캐싱하는 로직
+        TerrainController tempTerrain = default;
+        TerrainType terrainType = TerrainType.NONE;
 
+        int loopCnt = 0;
+        foreach (GameObject tile_ in allTileObjs)
+        {
+            tempTerrain = tile_.GetComponentMust<TerrainController>();
+            switch (tempTerrain.name)
+            {
+                case RDefine.TERRAIN_PREF_PLAIN:
+                    terrainType = TerrainType.PLAIN_PASS;
+                    break;
+                case RDefine.TERRAIN_PREF_OCEAN:
+                    terrainType = TerrainType.OCEAN_N_PASS;
+                    break;
+                default:
+                    terrainType = TerrainType.NONE;
+                    break;
+            }       // switch: 지형별로 다른 설정을 한다.
+
+            tempTerrain.SetUpTerrain(mapControler, terrainType, loopCnt);
+            tempTerrain.transform.SetAsFirstSibling();
+            allTerrains.Add(tempTerrain);
+            loopCnt += 1;
+        }       // loop: 타일의 이름과 렌더링 순서대로 정렬하는 루프
         // } 기존에 존재하는 타일의 순서를 조정하고, 컨트롤러를 캐싱하는 로직
 
     }       // Start()
@@ -101,6 +125,7 @@ public class TerrainMap : TileMapController
         }
         return default;
     }       // GetTile()
+
 
 
 }
